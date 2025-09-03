@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:venkatesh/data/models/response/response_model.dart';
 
 import '../data/models/response/user_model.dart';
 import '../data/repositories/auth_repo.dart';
@@ -23,7 +25,88 @@ class AuthController extends GetxController implements GetxService {
 
   bool get isLoading => _isLoading;
 
-  bool get acceptTerms => _acceptTerms;
+  // bool get acceptTerms => _acceptTerms;
+
+  // static final FirebaseAuth _auth = FirebaseAuth.instance;
+  // static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  // static bool isInitialize = false;
+
+  // static Future<void> initSignIn() async {
+  //   if (!isInitialize) {
+  //     await _googleSignIn.initialize(
+  //       serverClientId:
+  //           "146315530249-iaqu5vtv1d9r59nqrltirsquenvj58oq.apps.googleusercontent.com",
+  //     );
+  //   }
+  //   isInitialize = true;
+  // }
+
+  // Future<ResponseModel?> signInWithGoogle() async {
+  //   ResponseModel responseModel;
+  //   _isLoading = true;
+  //   update();
+
+  //   try {
+  //     initSignIn();
+  //     final GoogleSignInAccount gooogleUser = await _googleSignIn
+  //         .authenticate();
+  //     final idToken = gooogleUser.authentication.idToken;
+  //     final authorizationClient = gooogleUser.authorizationClient;
+
+  //     GoogleSignInClientAuthorization? authorization = await authorizationClient
+  //         .authorizationForScopes(['email', 'profile']);
+
+  //     final accessToken = authorization?.accessToken;
+  //     if (acceptTerms == null) {
+  //       final authorization2 = await authorizationClient.authorizationForScopes(
+  //         ['email', 'profile'],
+  //       );
+  //       if (authorization2?.accessToken == null) {
+  //         throw FirebaseAuthException(code: "Error", message: "error");
+  //       }
+  //       authorization = authorization2;
+  //     }
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: accessToken,
+  //       idToken: idToken,
+  //     );
+
+  //     final UserCredential userCredential = await FirebaseAuth.instance
+  //         .signInWithCredential(credential);
+
+  //     final User? user = userCredential.user;
+  //     if (user != null) {
+  //       final userDoc = FirebaseFirestore.instance
+  //           .collection("users")
+  //           .doc(user.uid);
+
+  //       final docSnapshot = await userDoc.get();
+  //       _userModel = UserModel(
+  //         uid: user.uid,
+  //         name: user.displayName ?? '',
+  //         email: user.email ?? '',
+  //         photoURL: user.photoURL ?? "",
+  //         provider: "google",
+  //         createdAt: DateTime.now(),
+  //       );
+
+  //       if (!docSnapshot.exists) {
+  //         await userDoc.set(_userModel!.toMap());
+  //       }
+  //       responseModel = ResponseModel(
+  //         true,
+  //         "Login Successfully",
+  //         userCredential,
+  //       );
+  //     }
+  //   } catch (e) {
+  //     responseModel = ResponseModel(true, "Login Fails", e);
+
+  //     print('Error: $e');
+  //   }
+  //   _isLoading = false;
+  //   update();
+  // }
 
   // Future<ResponseModel> generatedOtp({required String phone}) async {
   //   log('----------- generatedOtp Called ----------');

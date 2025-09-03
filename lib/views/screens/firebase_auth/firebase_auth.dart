@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:venkatesh/controllers/auth_controller.dart';
+import 'package:venkatesh/data/models/response/response_model.dart';
 import 'package:venkatesh/services/google_service/googe_service.dart';
 import 'package:venkatesh/services/route_helper.dart';
 import 'package:venkatesh/views/screens/home_screen/home_screen.dart';
@@ -56,57 +60,65 @@ class GoogleLoginScreenState extends State<GoogleLoginScreen> {
           ).textTheme.displaySmall!.copyWith(fontSize: 20),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.lock_outline, size: 100, color: Colors.blueAccent),
-            const SizedBox(height: 30),
+      body: GetBuilder<AuthController>(
+        builder: (authController) {
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(
+                  Icons.lock_outline,
+                  size: 100,
+                  color: Colors.blueAccent,
+                ),
+                const SizedBox(height: 30),
 
-            // Title
-            Text(
-              "What's your",
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontSize: 35,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Login with Google",
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontSize: 35,
-                color: Colors.black,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
+                // Title
+                Text(
+                  "What's your",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 35,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Login with Google",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 35,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
 
-            const SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              child: _isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : OutlinedButton(
-                      onPressed: () async {
-                        _signInWithGoogle();
-                      },
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
+                  child: authController.isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : OutlinedButton(
+                          onPressed: () async {
+                            _signInWithGoogle();
+                          },
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: const Text(
+                            "Continue with Email",
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        "Continue with Email",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
