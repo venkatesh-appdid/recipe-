@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "146315530249",
+    "project_id": "recipe-app-31636",
+    "storage_bucket": "recipe-app-31636.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146315530249:android:9030fa1f2785c83de228d8",
+        "android_client_info": {
+          "package_name": "com.example.venkatesh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146315530249-473sok36jecjmdd8vcecv45fe3ce357m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.venkatesh",
+            "certificate_hash": "e5858da21de744619146ba8b24f6de5a4f810278"
+          }
+        },
+        {
+          "client_id": "146315530249-iaqu5vtv1d9r59nqrltirsquenvj58oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVUTEV0NsdRg6cJoaaEO1HQniMDmhcBPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146315530249-iaqu5vtv1d9r59nqrltirsquenvj58oq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
